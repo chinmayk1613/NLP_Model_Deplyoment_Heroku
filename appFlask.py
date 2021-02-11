@@ -5,12 +5,12 @@ import pickle
 nlpModel=pickle.load(open('nlpModel.pkl','rb'))
 CVtransform=pickle.load(open('transform.pkl','rb'))
 
-app=Flask(__name__)
+appNLP=Flask(__name__)
 
-@app.route('/', methods=['POST','GET'])
+@appNLP.route('/', methods=['POST','GET'])
 def homePage():
     return render_template('homePage.html')
-@app.route('/predictReview',methods=['POST','GET'])
+@appNLP.route('/predictReview',methods=['POST','GET'])
 def predictReview():
     if request.method == 'POST':
         review = request.form['message']
@@ -21,4 +21,4 @@ def predictReview():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    appNLP.run(debug=True)
