@@ -7,10 +7,10 @@ CVtransform=pickle.load(open('transform.pkl','rb'))
 
 appNLP=Flask(__name__)
 
-@appNLP.route(('/'))
+@appNLP.route('/', methods=['POST','GET'])
 def homePage():
     return render_template('homePage.html')
-@appNLP.route('/predictReview',methods=['POST'])
+@appNLP.route('/predictReview',methods=['POST','GET'])
 def predictReview():
     if request.method == 'POST':
         review = request.form['message']
